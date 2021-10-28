@@ -71,6 +71,8 @@ public class UIMenu {
             }
         }while (respuesta != 0);
     }
+    //cambiar costructores de paciente y doctor
+    //agregar los tres parametros ususario, contr, status
 
     private static void authUser(int tipoUsuario ){
         //tipoUsuario = 1 Doctor
