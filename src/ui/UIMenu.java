@@ -83,10 +83,10 @@ public class UIMenu {
         doctores.add(new Doctor("Samuel Lopez","samuel@email.com"));
         doctores.add(new Doctor("Esther Lopez","esther@email.com"));
 
-        ArrayList <Paciente> patients = new ArrayList<>();
-        patients.add(new Paciente("Juan Perez","juan@email.com"));
-        patients.add(new Paciente("Taylor Perez","taylor@email.com"));
-        patients.add(new Paciente("Tyrone  Perez","tyrone@email.com"));
+        ArrayList <Paciente> pacientes = new ArrayList<>();
+        pacientes.add(new Paciente("Juan Perez","juan@email.com"));
+        pacientes.add(new Paciente("Taylor Perez","taylor@email.com"));
+        pacientes.add(new Paciente("Tyrone  Perez","tyrone@email.com"));
 
         boolean emailCorecto = false;
         do{
@@ -104,7 +104,7 @@ public class UIMenu {
                 }
             }
             if( tipoUsuario == 2){
-                for( Paciente p : patients){
+                for( Paciente p : pacientes){
                     if(p.getEmail().equals(email)){
                         emailCorecto = true;
                         pacienteRegistrado = p;
