@@ -61,9 +61,7 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return "model.User: " + nombre + ", Email: "+email+
+        return "Nombre: " + nombre + ", Email: "+email+
                 "\nAddreess: "+ direccion +". Phone: "+ numeroTel;
     }
-
-    public abstract void showDateUser();
 }

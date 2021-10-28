@@ -40,10 +40,6 @@ public class Doctor extends Usuario {
                 "\nAvailable: " + citaDisponibles.toString() ;
     }
 
-    @Override
-    public void showDateUser() {
-    }
-
     public static class CitaDisponible {
         private int id;
         private Date fecha;
