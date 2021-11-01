@@ -18,7 +18,7 @@ public class UIMenuDoctor {
             System.out.println("Bienvenido  DR. " + UIMenu.doctorRegistrado.getNombre());
             System.out.println("1.- Agregar cita disponible");
             System.out.println("2.- Mi cita programada");
-            System.out.println("0.- Cerrar sesión ");
+            System.out.println("0.- Cerrar sesiÃ³n ");
 
             Scanner sc = new Scanner(System.in);
             respuesta = sc.nextInt();
@@ -51,12 +51,18 @@ public class UIMenuDoctor {
             System.out.println("::Selecciona un mes ");
 
             final int MES_ACTUAL = fechaActual.getMonth();
-            final int YEAR_ACTUAL = fechaActual.getYear();
+            final int YEAR_ACTUAL = fechaActual.getYear()+1900;
             final int DAY_ACTUAL  = fechaActual.getDay();
 
             int j = 1;
             for ( int meses = MES_ACTUAL ; meses < MES_ACTUAL+3; meses++){
-                System.out.println(j++ + ". " + UIMenu.MESES[meses]);
+            	
+            	if(meses > 11) {
+            		System.out.println(j++ + ". " + UIMenu.MESES[meses-12]);
+            	}else {
+            		System.out.println(j++ + ". " + UIMenu.MESES[meses]);
+            	}
+                
             }
             System.out.println("0. Regresar.");
 
@@ -68,10 +74,21 @@ public class UIMenuDoctor {
                 int mesSeleccionado = MES_ACTUAL + respuesta;//aux
                 System.out.println(respuesta + ". " + UIMenu.MESES[mesSeleccionado-1]);
 
-                //modificar la fecha solo ingresar el dia
-                System.out.println("Inserte la fecha disponible: [dd/mm/aaaa]");
-                String fecha = sc.nextLine();
+                int fechadia;
+                do {
+                	System.out.println("Inserte el dia disponible en el mes de "+UIMenu.MESES[mesSeleccionado-1]);
+                	fechadia = Integer.valueOf(sc.nextLine());
+                	System.out.println(fechadia);
+                }while(fechadia < DAY_ACTUAL || fechadia > 31);
+                
+                int fechaano;
+                do {
+                	System.out.println("Ahora inserte el Año de la cita: ");
+                	fechaano = Integer.valueOf(sc.nextLine());
+                }while(fechaano < YEAR_ACTUAL);
 
+                String fecha = fechadia + "/" + mesSeleccionado + "/" + fechaano;
+                
                 System.out.println("Tu fecha es : " + fecha + "\n1. Correcto \n2. Cambiar fecha");
 
                 int respuestaFecha = Integer.valueOf(sc.nextLine());
@@ -81,9 +98,19 @@ public class UIMenuDoctor {
                 int respuestaHora = 0;
                 String hora ="";
                 do {
-                    System.out.println("Inserte la hora disponible para la fecha: " + fecha + " [HH:mm] ");
-                    //validar la que exista la hora
-                    hora = sc.nextLine();
+                    System.out.println("A continuacion se le pedira la hora disponible para la fecha: " + fecha + " [HH:mm] ");
+                    int horas;
+                    do {
+                    	System.out.println("Escriba la hora:");
+                    	horas = Integer.valueOf(sc.nextLine());
+                    }while(horas > 23);
+                    
+                    int minutos;
+                    do {
+                    	System.out.println("Escriba los minutos:");
+                    	minutos = Integer.valueOf(sc.nextLine());
+                    }while(minutos > 59);
+                    hora = horas + ":" + minutos;
                     System.out.println("Tu hora es: " + hora + "\n1. Correcto. \n2. Cambiar hora.");
                     respuestaHora = Integer.valueOf(sc.nextLine());
                 }while ( respuestaHora == 2);
@@ -99,8 +126,7 @@ public class UIMenuDoctor {
     }
 
     private  static void checkCitaDisponibleDoctor (Doctor doctor){
-        if (doctor.getCitaDisponibles().size() > 0
-                && !citasDisponiblesDoctores.contains(doctor)){
+        if (doctor.getCitaDisponibles().size() > 0 && !citasDisponiblesDoctores.contains(doctor)){
             citasDisponiblesDoctores.add(doctor);
         }
     }
@@ -109,4 +135,5 @@ public class UIMenuDoctor {
 
     }
 }
+
 
