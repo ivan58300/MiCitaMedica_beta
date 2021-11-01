@@ -65,7 +65,9 @@ public class UIMenuAdministrador {
             int respuesta = Integer.valueOf(sc.nextLine());
 
             if(respuesta  == 1){
+
                 UIMenu.doctores.add(new Doctor(nombre,correo,direccion,numero,pass,true,especialidad));
+                //
                 ban = false;
                 mostrarMenuAdministrador();
 
