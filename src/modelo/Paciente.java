@@ -17,7 +17,7 @@ public class Paciente extends Usuario{
     }
 
     public void addDoctorCitas(Doctor doctor, Date fecha, String hora) {
-        DoctorCita doctorCita = new DoctorCita(this,doctor);
+        DoctorCita doctorCita = new DoctorCita(this,doctor,getId());
         doctorCita.programable(fecha, hora);
         doctorCitas.add(doctorCita);
     }

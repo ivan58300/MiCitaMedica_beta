@@ -121,8 +121,9 @@ public class UIMenuDoctor {
                 //registro de fechas disponibles.
                 UIMenu.doctorRegistrado.agregarCitasDisponibles(fecha,hora);
                 checkCitaDisponibleDoctor(UIMenu.doctorRegistrado);
+                int id = 1;
 
-                modelo.Archivos.archicoCitaDoctores(fecha,hora);
+                modelo.Archivos.archicoCitaDoctores(fecha,hora,UIMenu.pacienteRegistrado.getNombre(),id);
 
 
             }else if (respuesta == 0){
@@ -139,6 +140,7 @@ public class UIMenuDoctor {
     }
     //los datos del paciente que eligio una cita con este doctor
     private static void mostrarListaCitasConfirmadas(){
+
 
     }
 }

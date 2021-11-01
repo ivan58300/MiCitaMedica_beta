@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class DoctorCita implements IProgramable{
 
-    private int id;
+    private static int id =0 ;
     private Paciente paciente;
     private Doctor doctor;
     private Date fecha;
@@ -15,9 +15,10 @@ public class DoctorCita implements IProgramable{
     SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 
     //costructor
-    public DoctorCita(Paciente paciente, Doctor doctor) {
+    public DoctorCita(Paciente paciente, Doctor doctor,int id) {
         this.paciente = paciente;
         this.doctor = doctor;
+        this.id = id++;
     }
 
     public int getId() {

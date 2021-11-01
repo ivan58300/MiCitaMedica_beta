@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 public class Archivos {
 
-    public static void archicoCitaDoctores(String fecha, String hora){
+    public static void archicoCitaDoctores(String fecha, String hora, String nompaciente, int id){
 
         File archivo = new File("./CitasDoctores");
 
@@ -26,7 +26,9 @@ public class Archivos {
             PrintWriter pw = new PrintWriter(fw);
 
             if(!pw.checkError()) {
+                pw.println("Paciente: "+ nompaciente);
                 pw.println("Doctor: "+ UIMenu.doctorRegistrado.getNombre());
+                pw.println("ID: "+ id );
                 pw.println("Fecha: "+fecha);
                 pw.println("Hora: "+hora);
             }
