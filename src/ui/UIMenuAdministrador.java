@@ -54,12 +54,11 @@ public class UIMenuAdministrador {
         String numero = sc.nextLine();
         System.out.println("Ingresar contraseña del Doctor: ");
         String pass = sc.nextLine();
-        boolean estatus = true;
         System.out.println("Ingresar especialidad del Doctor: ");
         String especialidad = sc.nextLine();
         //Int numero = Integer.valueOf(sc.nextLine());
         doctores.add(new Doctor( nombre, correo, direccion,
-                numero, pass,true, especialidad));
+                numero, pass, true, especialidad));
     }
 
     private static void agregarPaciente(){

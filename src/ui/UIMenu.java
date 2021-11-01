@@ -1,5 +1,6 @@
 package ui;
 
+import modelo.Administrador;
 import modelo.Doctor;
 import modelo.Paciente;
 
@@ -38,6 +39,9 @@ public class UIMenu {
         pacientes.add(new Paciente("Taylor Perez","taylor@email.com"));
         pacientes.add(new Paciente("Tyrone  Perez","tyrone@email.com"));
 
+        ArrayList <Administrador> administradors = new ArrayList<>();
+        administradors.add(new Administrador(1, "Administrador", "administrador@gmail.com", "administrador123"));
+
         boolean usuarioCorrecto = false;
         boolean contrasenaCorrecta = false;
         String contrasena = null;
@@ -74,6 +78,17 @@ public class UIMenu {
                         UIMenuPaciente.mostrarMenuPaciente();
                         usuarioCorrecto = true;
                         contrasenaCorrecta = true;
+                    }
+
+                }
+            }
+            for(Administrador a : administradors) {
+                if (a.getEmail().equals(usuario)) {
+                    if (a.getContrasena().equals(contrasena)){
+                        UIMenuAdministrador.mostrarMenuAdministrador();
+                        usuarioCorrecto = true;
+                        contrasenaCorrecta = true;
+
                     }
 
                 }
