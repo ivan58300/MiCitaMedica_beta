@@ -105,17 +105,17 @@ public class UIMenuDoctor {
                     System.out.println("A continuacion se le pedira la hora disponible para la fecha: " + fecha + " [HH:mm] ");
                     int horas;
                     do {
-                        System.out.println("Escriba la hora:");
+                        System.out.println("Escriba la hora: [HH]");
                         horas = Integer.valueOf(sc.nextLine());
                     } while (horas > 23);
 
                     int minutos;
                     do {
-                        System.out.println("Escriba los minutos:");
+                        System.out.println("Escriba los minutos: [mm] ");
                         minutos = Integer.valueOf(sc.nextLine());
                     } while (minutos > 59);
                     hora = horas + ":" + minutos;
-                    System.out.printf("Tu hora es: %.2i:%.2i \n1. Correcto. \n2. Cambiar hora.", hora, minutos);
+                    System.out.println("La Hora: " + hora + " es correcto  \n1.Correcto\n2. Cambiar hora");
                     respuestaHora = Integer.valueOf(sc.nextLine());
                 } while (respuestaHora == 2);
                 //registro de fechas disponibles.
