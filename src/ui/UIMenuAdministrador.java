@@ -42,23 +42,33 @@ public class UIMenuAdministrador {
 
     //Metodo
     private static void agregarDoctor(){
-        ArrayList<Doctor> doctores = new ArrayList<>();
-        System.out.println("Ingresar nombre del Doctor: ");
-        Scanner sc = new Scanner(System.in);
-        String nombre = sc.nextLine();
-        System.out.println("Ingresar el correo del Doctor: ");
-        String correo = sc.nextLine();
-        System.out.println("Ingresar la direccion del Doctor: ");
-        String direccion = sc.nextLine();
-        System.out.println("Ingresar numero del Doctor: ");
-        String numero = sc.nextLine();
-        System.out.println("Ingresar contraseña del Doctor: ");
-        String pass = sc.nextLine();
-        System.out.println("Ingresar especialidad del Doctor: ");
-        String especialidad = sc.nextLine();
+        do {
+            ArrayList<Doctor> doctores = new ArrayList<>();
+            System.out.println("Ingresar nombre del Doctor: ");
+            Scanner sc = new Scanner(System.in);
+            String nombre = sc.nextLine();
+            System.out.println("Ingresar el correo del Doctor: ");
+            String correo = sc.nextLine();
+            System.out.println("Ingresar la direccion del Doctor: ");
+            String direccion = sc.nextLine();
+            System.out.println("Ingresar numero del Doctor: ");
+            String numero = sc.nextLine();
+            System.out.println("Ingresar contraseña del Doctor: ");
+            String pass = sc.nextLine();
+            System.out.println("Ingresar especialidad del Doctor: ");
+            String especialidad = sc.nextLine();
+            System.out.println("Los datos ingresados son correctos");
+            System.out.println("1. correcto");
+            System.out.println("0. Volver a ingresar datos");
+            int respuesta = Integer.valueOf(sc.nextLine());
+            boolean ban = false;
+            if(respuesta == 1){
+                doctores.add(new Doctor( nombre, correo, direccion,
+                        numero, pass, true, especialidad));
+            }
+        } while (UIMenuAdministrador);
         //Int numero = Integer.valueOf(sc.nextLine());
-        doctores.add(new Doctor( nombre, correo, direccion,
-                numero, pass, true, especialidad));
+
     }
 
     private static void agregarPaciente(){
