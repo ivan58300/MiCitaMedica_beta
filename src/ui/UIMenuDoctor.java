@@ -4,6 +4,10 @@ import modelo.Doctor;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.FileWriter;
 
 public class UIMenuDoctor {
 
