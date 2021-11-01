@@ -114,8 +114,8 @@ public class UIMenuDoctor {
                     	System.out.println("Escriba los minutos:");
                     	minutos = Integer.valueOf(sc.nextLine());
                     }while(minutos > 59);
-                    hora = horas + ":" + minutos;
-                    System.out.println("Tu hora es: " + hora + "\n1. Correcto. \n2. Cambiar hora.");
+                    //hora = horas + ":" + minutos;
+                    System.out.printf("Tu hora es: %.2i:%.2i \n1. Correcto. \n2. Cambiar hora.",hora,minutos);
                     respuestaHora = Integer.valueOf(sc.nextLine());
                 }while ( respuestaHora == 2);
                 //registro de fechas disponibles.
