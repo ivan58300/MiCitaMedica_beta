@@ -40,7 +40,7 @@ public class UIMenu {
         pacientes.add(new Paciente("Tyrone  Perez","tyrone@email.com"));
 
         ArrayList <Administrador> administradors = new ArrayList<>();
-        administradors.add(new Administrador(1, "Administrador", "administrador@gmail.com", "administrador123"));
+        administradors.add(new Administrador(1, "Administrador", "a", "c"));
 
         boolean usuarioCorrecto = false;
         boolean contrasenaCorrecta = false;

@@ -42,6 +42,7 @@ public class UIMenuAdministrador {
 
     //Metodo
     private static void agregarDoctor(){
+        boolean ban = true;
         do {
             ArrayList<Doctor> doctores = new ArrayList<>();
             System.out.println("Ingresar nombre del Doctor: ");
@@ -61,14 +62,15 @@ public class UIMenuAdministrador {
             System.out.println("1. correcto");
             System.out.println("0. Volver a ingresar datos");
             int respuesta = Integer.valueOf(sc.nextLine());
-            boolean ban = false;
-            if(respuesta == 1){
+
+            if(respuesta  == 1){
+                ban = false;
                 doctores.add(new Doctor( nombre, correo, direccion,
                         numero, pass, true, especialidad));
+                mostrarMenuAdministrador();
             }
-        } while (UIMenuAdministrador);
+        }while (ban);
         //Int numero = Integer.valueOf(sc.nextLine());
-
     }
 
     private static void agregarPaciente(){
