@@ -17,6 +17,13 @@ public abstract class Usuario {
     public Usuario(){
     }
 
+    public Usuario(int id, String nombre, String email, String contrasena) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.contrasena = contrasena;
+    }
+
     public Usuario(String nombre, String email, String direccion, String numeroTel, String contrasena, boolean estatus) {
         this.nombre = nombre;
         this.email = email;
