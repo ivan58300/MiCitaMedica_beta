@@ -42,7 +42,7 @@ public class UIMenuAdministrador {
     }
 
     //Metodo
-    private static void agregarDoctor(){
+    private static String  agregarDoctor(){
         boolean ban = true;
 
         do {
@@ -72,9 +72,10 @@ public class UIMenuAdministrador {
             }
         }while (ban);
         //Int numero = Integer.valueOf(sc.nextLine());
+        return null;
     }
 
-    private static void agregarPaciente(){
+    private static String agregarPaciente(){
         boolean ban = true;
         do {
             float peso, altura;
@@ -110,5 +111,6 @@ public class UIMenuAdministrador {
             }
 
         }while (ban);
+        return null;
     }
 }

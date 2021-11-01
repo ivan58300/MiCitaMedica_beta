@@ -11,11 +11,6 @@ public class UIMenu {
     static ArrayList <Doctor> doctores = new ArrayList<>();
     static ArrayList <Paciente> pacientes = new ArrayList<>();
 
-    public static ArrayList<Doctor> getDoctores() {
-        return doctores;
-    }
-
-
 
 
     public static final String[] MESES = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};

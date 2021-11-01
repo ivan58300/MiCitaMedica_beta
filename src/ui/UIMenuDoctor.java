@@ -118,8 +118,8 @@ public class UIMenuDoctor {
                 UIMenu.doctorRegistrado.agregarCitasDisponibles(fecha,hora);
                 checkCitaDisponibleDoctor(UIMenu.doctorRegistrado);
                 
-                File archivo = new File("./CitasDoctores");
-                
+               File archivo = new File("./CitasDoctores");
+
                 if(!archivo.exists() ) {
             	try {
             		archivo.createNewFile();
