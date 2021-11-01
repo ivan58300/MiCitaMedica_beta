@@ -3,13 +3,14 @@ package ui;
 import modelo.Doctor;
 import modelo.Paciente;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UIMenuAdministrador {
 
     public static void mostrarMenuAdministrador(){
-        ArrayList<Doctor> doctores = new ArrayList<>();
+
         int respuesta = 0;
         do {
 
@@ -25,7 +26,7 @@ public class UIMenuAdministrador {
             switch (respuesta){
                 case 1:
                     respuesta = 0;
-                    agregarDoctor(doctores);
+                    agregarDoctor();
                     break;
                 case 2:
                     respuesta = 0;
@@ -42,7 +43,7 @@ public class UIMenuAdministrador {
     }
 
     //Metodo
-    private static void agregarDoctor(ArrayList doctores){
+    private static void agregarDoctor(){
         boolean ban = true;
         do {
             System.out.println("Ingresar nombre del Doctor: ");
@@ -64,10 +65,10 @@ public class UIMenuAdministrador {
             int respuesta = Integer.valueOf(sc.nextLine());
 
             if(respuesta  == 1){
+                UIMenu.doctores.add(new Doctor(nombre,correo,direccion,numero,pass,true,especialidad));
                 ban = false;
-                doctores.add(new Doctor( nombre, correo, direccion,
-                        numero, pass, true, especialidad));
                 mostrarMenuAdministrador();
+
             }
         }while (ban);
         //Int numero = Integer.valueOf(sc.nextLine());
