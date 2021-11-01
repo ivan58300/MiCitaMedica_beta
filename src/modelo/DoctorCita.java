@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class DoctorCita implements IProgramable{
 
-    private static int id =0 ;
+    public static int id =0 ;
     private Paciente paciente;
     private Doctor doctor;
     private Date fecha;

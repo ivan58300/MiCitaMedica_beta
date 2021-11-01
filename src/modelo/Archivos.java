@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 public class Archivos {
 
-    public static void archicoCitaDoctores(String fecha, String hora, String nompaciente, int id){
+    public static void archivoCitaDoctores(String fecha, String hora){
 
         File archivo = new File("./CitasDoctores");
 
@@ -26,15 +26,17 @@ public class Archivos {
             PrintWriter pw = new PrintWriter(fw);
 
             if(!pw.checkError()) {
-                pw.println("Paciente: "+ nompaciente);
+                pw.println("Paciente: "+ UIMenu.pacienteRegistrado.getNombre());
                 pw.println("Doctor: "+ UIMenu.doctorRegistrado.getNombre());
-                pw.println("ID: "+ id );
+                pw.println("ID: "+ DoctorCita.id );
                 pw.println("Fecha: "+fecha);
                 pw.println("Hora: "+hora);
             }
             pw.close();
         }catch (IOException e) {
             e.printStackTrace();
+        }catch (NullPointerException e){
+
         }
     }
     public static void archivoDoctores(String nombre, String direccion, String correo,  String numero,  String pass, String especialidad){

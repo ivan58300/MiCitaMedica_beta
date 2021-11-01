@@ -1,6 +1,8 @@
 package ui;
 
 import modelo.Doctor;
+import modelo.DoctorCita;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -121,11 +123,7 @@ public class UIMenuDoctor {
                 //registro de fechas disponibles.
                 UIMenu.doctorRegistrado.agregarCitasDisponibles(fecha, hora);
                 checkCitaDisponibleDoctor(UIMenu.doctorRegistrado);
-                int id = 1;
-
-                modelo.Archivos.archicoCitaDoctores(fecha, hora, UIMenu.pacienteRegistrado.getNombre(), id);
-
-
+                modelo.Archivos.archivoCitaDoctores(fecha,hora);
             } else if (respuesta == 0) {
                 mostrarMenuDoctor();
             }

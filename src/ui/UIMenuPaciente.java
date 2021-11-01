@@ -92,6 +92,7 @@ public class UIMenuPaciente {
                 UIMenu.pacienteRegistrado.addDoctorCitas(doctorSeleccionado,
                         doctorSeleccionado.getCitaDisponibles().get(fechaIndice).getDate(),
                         doctorSeleccionado.getCitaDisponibles().get(fechaIndice).getHora());
+
                 UIMenuPaciente.mostrarMenuPaciente();
                 respuesta = 0;
 
