@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class UIMenu {
     static ArrayList <Doctor> doctores = new ArrayList<>();
+    static ArrayList <Paciente> pacientes = new ArrayList<>();
 
     public static final String[] MESES = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
     public static Doctor doctorRegistrado;
@@ -33,7 +34,7 @@ public class UIMenu {
         doctores.add(new Doctor("a", "aa", " ", "12345678", "s", true, "q"));
         //doctores.add(new Doctor(Doctor.getNombre(), Doctor.getEmail(), Doctor.getDireccion(), Doctor.getNumeroTel(),Doctor.getContrasena(),true, Doctor.getEspecialidad()));
 
-        ArrayList <Paciente> pacientes = new ArrayList<>();
+
         pacientes.add(new Paciente("Juan","juan@email.com", "Juarez, N.L.", "12345678","juan123", true ,"12/12/2000","B+" ,89.5, 1.80 ));
         pacientes.add(new Paciente("Taylor Perez","taylor@email.com"));
         pacientes.add(new Paciente("Tyrone  Perez","tyrone@email.com"));
