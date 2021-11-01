@@ -2,10 +2,7 @@ package ui;
 
 import modelo.Doctor;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class UIMenuPaciente {
 
@@ -21,17 +18,20 @@ public class UIMenuPaciente {
             System.out.println("0. Regresar ");
 
             Scanner sc = new Scanner(System.in);
-            respuesta = Integer.valueOf(sc.nextLine());
+            respuesta = sc.nextInt();
 
             switch (respuesta){
                 case 1:
+                    respuesta = 0;
                     mostrarMenuReservarCita();
                     break;
                 case 2:
+                    respuesta = 0;
                     mostrarCitasPacientes();
                     break;
                 case 0:
                     UIMenu.mostrarMenu();
+                    UIMenu.seccion = 1;
                     break;
 
             }
@@ -55,14 +55,14 @@ public class UIMenuPaciente {
              * 3.- doctor3
              * */
             Map<Integer, Map<Integer, Doctor>> doctores = new TreeMap<>();
-            int k = 0;
+            Integer k = 0;
             for (int i = 0; i < UIMenuDoctor.citasDisponiblesDoctores.size() ; i++) {
                 ArrayList<Doctor.CitaDisponible> citaDisponibles = UIMenuDoctor.citasDisponiblesDoctores.get(i).getCitaDisponibles();
 
                 Map<Integer, Doctor> citasDoctor = new TreeMap<>();
                 for (int j = 0; j < citaDisponibles.size(); j++) {
                     k++;
-                    System.out.println(k + ". " + citaDisponibles.get(j).getFecha());
+                    System.out.println(k + ". Fecha: " + citaDisponibles.get(j).getFecha() + " Hora: " + citaDisponibles.get(j).getHora());
                     citasDoctor.put(Integer.valueOf(j), UIMenuDoctor.citasDisponiblesDoctores.get(i));
                     doctores.put(Integer.valueOf(k), citasDoctor);
 
@@ -81,8 +81,8 @@ public class UIMenuPaciente {
             }
 
             System.out.println("Dr. " + doctorSeleccionado.getNombre() +
-                    ". Date: " + doctorSeleccionado.getCitaDisponibles().get(fechaIndice).getFecha() +
-                    ". Time: " + doctorSeleccionado.getCitaDisponibles().get(fechaIndice).getHora() +
+                    ". Fecha: " + doctorSeleccionado.getCitaDisponibles().get(fechaIndice).getFecha() +
+                    ". Hora: " + doctorSeleccionado.getCitaDisponibles().get(fechaIndice).getHora() +
                     "\n");
 
             System.out.println("Confirma tu cita: \n1. Confirmar.\n2. Cambiar Fecha.");
@@ -90,9 +90,10 @@ public class UIMenuPaciente {
 
             if (respuesta == 1){
                 UIMenu.pacienteRegistrado.addDoctorCitas(doctorSeleccionado,
-                        doctorSeleccionado.getCitaDisponibles().get(fechaIndice).getDate(null),
+                        doctorSeleccionado.getCitaDisponibles().get(fechaIndice).getDate(),
                         doctorSeleccionado.getCitaDisponibles().get(fechaIndice).getHora());
-                mostrarMenuPaciente();
+                UIMenuPaciente.mostrarMenuPaciente();
+                respuesta = 0;
 
             }
         }while(respuesta != 0);
@@ -104,14 +105,20 @@ public class UIMenuPaciente {
         do {
             System.out.println("::Mis citas");
             if(UIMenu.pacienteRegistrado.getDoctorCitas().size() == 0){
-                System.out.println("No tiene citas.");
+                do{
+                    System.out.println("\nNo tiene citas.");
+                    System.out.println("\n0. Regresar");
+                    response = Integer.valueOf(sc.nextLine());
+                }while(response != 0);
+                UIMenuPaciente.mostrarMenuPaciente();
                 break;
+
             }
 
             for (int i = 0; i < UIMenu.pacienteRegistrado.getDoctorCitas().size(); i++) {
                 int j = i + 1;
                 System.out.println(j + ". " +
-                        "\nFecha : " + UIMenu.pacienteRegistrado.getDoctorCitas().get(i).getFecha() +
+                        "\nFecha : " + UIMenu.pacienteRegistrado.getDoctorCitas().get(i).getfecha() +
                         "\nHora  : " + UIMenu.pacienteRegistrado.getDoctorCitas().get(i).getHora() +
                         "\nDoctor: " + UIMenu.pacienteRegistrado.getDoctorCitas().get(i).getDoctor().getNombre() +
                         "\n");
@@ -119,7 +126,12 @@ public class UIMenuPaciente {
 
             System.out.println("0. Regresar. ");
             response = Integer.valueOf(sc.nextLine());
+            if (response == 0 ){
+                mostrarMenuPaciente();
+            }
+
         }while(response != 0);
+
     }
 }
 

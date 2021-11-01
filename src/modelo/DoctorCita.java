@@ -1,5 +1,7 @@
 package modelo;
 
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DoctorCita implements IProgramable{
@@ -9,6 +11,9 @@ public class DoctorCita implements IProgramable{
     private Doctor doctor;
     private Date fecha;
     private String hora;
+
+    SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+
     //costructor
     public DoctorCita(Paciente paciente, Doctor doctor) {
         this.paciente = paciente;
@@ -39,8 +44,11 @@ public class DoctorCita implements IProgramable{
         this.doctor = doctor;
     }
 
-    public Date getFecha() {
+    public Date getFecha(String DATE) {
         return fecha;
+    }
+    public String getfecha(){
+        return format.format(fecha);
     }
 
     public void setFecha(Date fecha) {
@@ -48,7 +56,7 @@ public class DoctorCita implements IProgramable{
     }
 
     public String getHora() {
-        return hora + "hrs.";
+        return hora;
     }
 
     public void setHora(String hora) {

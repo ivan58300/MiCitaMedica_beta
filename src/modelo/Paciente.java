@@ -26,6 +26,14 @@ public class Paciente extends Usuario{
         super(nombre, email);
     }
 
+    public Paciente(String nombre, String email, String direccion, String numeroTel, String contrasena, boolean estatus, String fechaNacimiento, String sangre, double peso, double altura) {
+        super(nombre, email, direccion, numeroTel, contrasena, estatus);
+        this.fechaNacimiento = fechaNacimiento;
+        this.sangre = sangre;
+        this.peso = peso;
+        this.altura = altura;
+    }
+
     public String getFechaNacimiento() {
         return fechaNacimiento;
     }

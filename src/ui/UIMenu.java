@@ -3,6 +3,7 @@ package ui;
 import modelo.Doctor;
 import modelo.Paciente;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,111 +12,81 @@ public class UIMenu {
     public static final String[] MESES = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
     public static Doctor doctorRegistrado;
     public static Paciente pacienteRegistrado;
+    public  static int seccion = 0;
 
-    public static void mostrarMenu(){
-        System.out.println("Bienvenido a Mis citas");
-        System.out.println("Selecciona la opción deseada");
+    public static void mostrarMenu() {
+        System.out.println("\t - Bienvenido a Mi Cita Medica -");
+        verificarUsuario();
+        if(seccion == 0 ){
+            System.out.println("Gracias por usar Mi Cita Medica.");
+        }
 
-        int respuesta = 0;
-        do {
-            System.out.println("1. Doctor");
-            System.out.println("2. Paciente");
-            System.out.println("0. salir");
-
-            Scanner sc = new Scanner(System.in);
-            respuesta = Integer.valueOf(sc.nextLine());
-
-            switch (respuesta){
-                case 1:
-                    System.out.println("Doctor");
-                    respuesta = 0;
-                    authUser(1);
-                    break;
-                case 2:
-                    respuesta = 0;
-                    authUser(2);
-                    break;
-                case 0:
-                    System.out.println("Thank you for you visit");
-                    break;
-                default:
-                    System.out.println("Please select a correct answer");
-            }
-        }while (respuesta != 0);
     }
 
-    public static void mostrarMenuPaciente(){
-        int respuesta = 0;
-        do {
-            System.out.println("\n\n");
-            System.out.println("1. Reservar una cita");
-            System.out.println("2. Mi cita");
-            System.out.println("0. Regresar");
+    private static void verificarUsuario( ) {
 
-            Scanner sc = new Scanner(System.in);
-            respuesta = Integer.valueOf(sc.nextLine());
-
-            switch (respuesta){
-                case 1:
-                    System.out.println("::Reservar una cita");
-                    for( int i = 1; i < 4; i++) {
-                        System.out.println(i + ". " + MESES[i]);
-                    }
-                    break;
-                case 2:
-                    System.out.println("::Mi cita");
-                    break;
-                case 0:
-                    mostrarMenu();
-                    break;
-            }
-        }while (respuesta != 0);
-    }
-    //cambiar costructores de paciente y doctor
-    //agregar los tres parametros ususario, contr, status
-
-    private static void authUser(int tipoUsuario ){
-        //tipoUsuario = 1 Doctor
-        //tipoUsuario = 2 paciente
 
         ArrayList<Doctor> doctores = new ArrayList<>();
-        doctores.add(new Doctor("Ivanoe Lopez","ivan@email.com"));
-        doctores.add(new Doctor("Samuel Lopez","samuel@email.com"));
-        doctores.add(new Doctor("Esther Lopez","esther@email.com"));
+        doctores.add(new Doctor( "Ivanoe", "ivan@email.com", "Santa Catarina, N.L.",
+                "10935355","ivan123",true,"Cardiología" ));
+        doctores.add(new Doctor( "Samuel", "samuel@email.com", "Santa Catarina, N.L.",
+                "10935356","samuel123",false,"Cirugía Pediátrica" ));
+        doctores.add(new Doctor("a", "aa", " ", "12345678", "s", true, "q"));
 
         ArrayList <Paciente> pacientes = new ArrayList<>();
-        pacientes.add(new Paciente("Juan Perez","juan@email.com"));
+        pacientes.add(new Paciente("Juan","juan@email.com", "Juarez, N.L.", "12345678","juan123", true ,"12/12/2000","B+" ,89.5, 1.80 ));
         pacientes.add(new Paciente("Taylor Perez","taylor@email.com"));
         pacientes.add(new Paciente("Tyrone  Perez","tyrone@email.com"));
 
-        boolean emailCorecto = false;
+        boolean usuarioCorrecto = false;
+        boolean contrasenaCorrecta = false;
+        String contrasena = null;
         do{
-            System.out.println("Inserta tu correo electrónico. : [user@email.com]");
+            System.out.println("Inserta tu correo electrónico.  : [user@email.com] (digite 0 para salir)");
             Scanner sc = new Scanner(System.in);
-            String email = sc.nextLine();
-            if( tipoUsuario == 1){
-                for(Doctor d : doctores){
-                    if(d.getEmail().equals(email)){
-                        emailCorecto = true;
+            String usuario = sc.nextLine();
+
+            if( usuario.equals("0")){
+                usuarioCorrecto = true;
+            }else{
+                System.out.println("Ingrese su contraseña: ");
+                contrasena = sc.nextLine();
+            }
+
+
+            for(Doctor d : doctores) {
+                if (d.getEmail().equals(usuario)) {
+                    if (d.getContrasena().equals(contrasena)){
                         //obtener el registro del doctor
                         doctorRegistrado = d;
                         UIMenuDoctor.mostrarMenuDoctor();
+                        usuarioCorrecto = true;
+                        contrasenaCorrecta = true;
+
                     }
+
                 }
             }
-            if( tipoUsuario == 2){
-                for( Paciente p : pacientes){
-                    if(p.getEmail().equals(email)){
-                        emailCorecto = true;
+            for( Paciente p : pacientes) {
+                if (p.getEmail().equals(usuario)) {
+                    if(p.getContrasena().equals(contrasena)){
                         pacienteRegistrado = p;
                         UIMenuPaciente.mostrarMenuPaciente();
+                        usuarioCorrecto = true;
+                        contrasenaCorrecta = true;
                     }
-                }
 
+                }
+            }
+            if(!contrasenaCorrecta && !(usuario.equals("0"))){
+                System.out.println("Contraseña o Usuario invalida\nIntente de nuevo \n\n");
             }
 
-        }while (!emailCorecto);
+
+        }while (!usuarioCorrecto);
     }
+
+
 
 }
 
