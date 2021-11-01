@@ -109,6 +109,7 @@ public class UIMenuAdministrador {
             if (respuesta == 1)
             {
                 UIMenu.pacientes.add(new Paciente(nombrep, correop, direccionp, telefonop, passp, true, fecha, sangre, peso, altura));
+                modelo.Archivos.archivoPacientes(nombrep, correop, direccionp, telefonop, passp, fecha, sangre, peso, altura);
                 ban = false;
                 mostrarMenuAdministrador();
             }

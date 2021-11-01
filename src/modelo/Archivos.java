@@ -64,8 +64,40 @@ public class Archivos {
             e.printStackTrace();
         }
     }
+    public static void archivoPacientes(String nombrep, String correop, String direccionp, String telefonop, String passp, String fecha, String sangre, float peso, float altura){
+        File archivo = new File("./Pacientes");
 
+        if(!archivo.exists() ) {
+            try {
+                archivo.createNewFile();
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            FileWriter fw = new FileWriter(archivo, true);
+            PrintWriter pw = new PrintWriter(fw);
+
+            if(!pw.checkError()) {
+                pw.println("Nombre: "+nombrep);
+                pw.println("Direccion: "+direccionp);
+                pw.println("Correo: "+correop);
+                pw.println("Numero: "+telefonop);
+                pw.println("Contraseña: "+passp);
+                pw.println("Estatus activo");
+                pw.println("Tipo de sangre: "+sangre);
+                pw.println("Altura: "+altura);
+                pw.println("Peso: "+peso);
+            }
+            pw.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+}
+
 
 
 
