@@ -4,15 +4,19 @@ import modelo.Administrador;
 import modelo.Doctor;
 import modelo.Paciente;
 
-
-import javax.print.Doc;
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UIMenu {
     static ArrayList <Doctor> doctores = new ArrayList<>();
     static ArrayList <Paciente> pacientes = new ArrayList<>();
+
+    public static ArrayList<Doctor> getDoctores() {
+        return doctores;
+    }
+
+
+
 
     public static final String[] MESES = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
     public static Doctor doctorRegistrado;
@@ -29,10 +33,10 @@ public class UIMenu {
     }
 
     private static void verificarUsuario() {
+
         doctores.add(new Doctor( "Samuel", "samuel@email.com", "Santa Catarina, N.L.",
                 "10935356","samuel123",false,"Cirugía Pediátrica" ));
         doctores.add(new Doctor("a", "aa", " ", "12345678", "s", true, "q"));
-        //doctores.add(new Doctor(Doctor.getNombre(), Doctor.getEmail(), Doctor.getDireccion(), Doctor.getNumeroTel(),Doctor.getContrasena(),true, Doctor.getEspecialidad()));
 
 
         pacientes.add(new Paciente("Juan","juan@email.com", "Juarez, N.L.", "12345678","juan123", true ,"12/12/2000","B+" ,89.5, 1.80 ));
@@ -58,7 +62,7 @@ public class UIMenu {
             }
 
 
-            for(Doctor d : doctores) {
+            for(Doctor d : UIMenu.doctores ){
                 if (d.getEmail().equals(usuario)) {
                     if (d.getContrasena().equals(contrasena)){
                         //obtener el registro del doctor

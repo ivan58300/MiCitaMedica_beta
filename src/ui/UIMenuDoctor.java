@@ -18,7 +18,7 @@ public class UIMenuDoctor {
             System.out.println("Bienvenido  DR. " + UIMenu.doctorRegistrado.getNombre());
             System.out.println("1.- Agregar cita disponible");
             System.out.println("2.- Mi cita programada");
-            System.out.println("0.- Cerrar sesiÃ³n ");
+            System.out.println("0.- Cerrar sección ");
 
             Scanner sc = new Scanner(System.in);
             respuesta = sc.nextInt();

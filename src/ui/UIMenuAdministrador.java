@@ -3,7 +3,6 @@ package ui;
 import modelo.Doctor;
 import modelo.Paciente;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -45,6 +44,7 @@ public class UIMenuAdministrador {
     //Metodo
     private static void agregarDoctor(){
         boolean ban = true;
+
         do {
             System.out.println("Ingresar nombre del Doctor: ");
             Scanner sc = new Scanner(System.in);
@@ -94,9 +94,9 @@ public class UIMenuAdministrador {
             System.out.println("Ingresar tipo de sangre del paciente:");
             String sangre = sc.nextLine();
             System.out.println("Ingresar peso del paciente:");
-            peso = sc.nextFloat();
+            peso = Float.valueOf(sc.nextLine());
             System.out.println("Ingresar altura del paciente:");
-            altura = sc.nextFloat();
+            altura = Float.valueOf(sc.nextLine());
             System.out.println("Los datos ingresados son correctos");
             System.out.println("1. correcto");
             System.out.println("0. Volver a ingresar datos");
