@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class UIMenuAdministrador {
 
     public static void mostrarMenuAdministrador(){
+        ArrayList<Doctor> doctores = new ArrayList<>();
         int respuesta = 0;
         do {
 
@@ -24,7 +25,7 @@ public class UIMenuAdministrador {
             switch (respuesta){
                 case 1:
                     respuesta = 0;
-                    agregarDoctor();
+                    agregarDoctor(doctores);
                     break;
                 case 2:
                     respuesta = 0;
@@ -41,10 +42,9 @@ public class UIMenuAdministrador {
     }
 
     //Metodo
-    private static void agregarDoctor(){
+    private static void agregarDoctor(ArrayList doctores){
         boolean ban = true;
         do {
-            ArrayList<Doctor> doctores = new ArrayList<>();
             System.out.println("Ingresar nombre del Doctor: ");
             Scanner sc = new Scanner(System.in);
             String nombre = sc.nextLine();
