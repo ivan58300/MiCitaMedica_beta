@@ -35,6 +35,37 @@ public class Archivos {
             e.printStackTrace();
         }
     }
+    public static void archivoDoctores(String nombre, String direccion, String correo,  String numero,  String pass, String especialidad){
+        File archivo = new File("./Doctores");
+
+        if(!archivo.exists() ) {
+            try {
+                archivo.createNewFile();
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            FileWriter fw = new FileWriter(archivo, true);
+            PrintWriter pw = new PrintWriter(fw);
+
+            if(!pw.checkError()) {
+                pw.println("Nombre: "+nombre);
+                pw.println("Direccion: "+direccion);
+                pw.println("Correo: "+correo);
+                pw.println("Numero: "+numero);
+                pw.println("Contraseña: "+pass);
+                pw.println("Estatus activo");
+                pw.println("Especialidad: "+especialidad);
+            }
+            pw.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    }
 
 
 }

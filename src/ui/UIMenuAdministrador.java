@@ -67,6 +67,7 @@ public class UIMenuAdministrador {
             if(respuesta  == 1){
 
                 UIMenu.doctores.add(new Doctor(nombre,correo,direccion,numero,pass,true,especialidad));
+                modelo.Archivos.archivoDoctores(nombre, correo, direccion, numero, pass, especialidad);
                 //
                 ban = false;
                 mostrarMenuAdministrador();
